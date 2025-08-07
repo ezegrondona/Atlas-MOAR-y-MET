@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas MOAR y MET</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>ATLAS MOAR y MET</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav id="menu">
+                <h2>Sistemas</h2>
+                <ul>
+                    <li class="menu-item" data-target="endocrino">
+                        <span>Endocrino</span>
+                        <ul class="submenu">
+                            <li class="submenu-item" data-target="hipofisis">Hipófisis</li>
+                            <li class="submenu-item" data-target="tiroides">Tiroides</li>
+                        </ul>
+                    </li>
+                    <li class="menu-item" data-target="nervioso-central">
+                        <span>Nervioso Central</span>
+                    </li>
+                    <li class="menu-item" data-target="digestivo">
+                        <span>Digestivo</span>
+                    </li>
+                    </ul>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <section id="inicio" class="page-section active">
+                <div class="hero-section">
+                    <img src="https://drive.google.com/uc?export=view&id=1OMXYvH055cl9ZtdTXtnoRCzCqvW2wbD0" alt="Imagen de bienvenida" class="welcome-image">
+                    <h2>Bienvenido al Atlas de Histología</h2>
+                    <p>Selecciona un sistema y un órgano del menú lateral para comenzar a explorar.</p>
+                </div>
+            </section>
+
+            <section id="hipofisis" class="page-section">
+                <h2>Hipófisis</h2>
+                <div class="gallery">
+                    <div class="image-card">
+                        <img src="https://drive.google.com/uc?export=view&id=11KNP9tnD-U3eFhHMr13uXkgKLSKL51fU" alt="Descripción de la imagen 2">
+                        <p class="image-description">Descripción de la hipófisis 2. Barra de escala 20um.</p>
+                    </div>
+
+
+                    <div class="image-card">
+                        <img src="TU_ENLACE_A_IMAGEN_2" alt="Descripción de la imagen 2">
+                        <p class="image-description">Descripción de la hipófisis 2. Barra de escala 20um.</p>
+                    </div>
+                </div>
+            </section>
+
+            </main>
+    </div>
+
+    <div id="image-modal" class="modal">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modal-image">
+        <div id="modal-caption"></div>
+    </div>
+
+</body>
+</html>
