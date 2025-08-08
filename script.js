@@ -10,19 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Maneja la visibilidad de los menús y las secciones de la página
     menuItems.forEach(item => {
         item.addEventListener('click', (event) => {
-            event.stopPropagation(); // Evita que los clics en submenús se propaguen al menú padre
+            // Evita que los clics en submenús se propaguen al menú padre
+            event.stopPropagation(); 
 
             const submenu = item.querySelector('.submenu');
             const targetId = item.dataset.target;
 
             // Si el elemento del menú tiene un submenú, lo expande/contrae
             if (submenu) {
-                // Si el menú principal es "Sistemas", se mantiene abierto.
-                // Si es otro menú anidado, lo cierra si está abierto y viceversa.
+                // Alterna la clase 'active' para mostrar/ocultar el submenú
+                item.classList.toggle('active');
+
+                // Si se activa, cierra otros submenús del mismo nivel para que solo uno esté abierto
                 if (item.classList.contains('active')) {
-                    item.classList.remove('active');
-                } else {
-                    // Cierra otros menús de un mismo nivel
                     const parentMenu = item.closest('ul');
                     if (parentMenu) {
                         const siblings = parentMenu.querySelectorAll('.menu-item');
@@ -32,11 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         });
                     }
-                    item.classList.add('active');
                 }
-            } 
-            // Si el elemento no tiene submenú, navega a la sección correspondiente y cierra todos los menús
-            else {
+            } else {
+                // Si el elemento no tiene submenú (ej. "Inicio"), navega a la sección
+                // y cierra todos los submenús para un aspecto más limpio
                 pageSections.forEach(section => {
                     section.classList.remove('active');
                 });
@@ -57,9 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cardLink) {
             event.preventDefault(); // Evita que el enlace recargue la página
             const targetId = cardLink.dataset.target;
+            
+            // Oculta todas las secciones
             pageSections.forEach(section => {
                 section.classList.remove('active');
             });
+            // Muestra la sección correspondiente
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
                 targetSection.classList.add('active');
