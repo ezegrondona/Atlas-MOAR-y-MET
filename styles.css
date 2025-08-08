@@ -27,7 +27,7 @@ header {
 
 /* Barra lateral */
 .sidebar {
-    width: 350px;
+    width: 300px;
     background-color: #444;
     color: white;
     padding: 20px;
@@ -211,5 +211,6 @@ header {
     color: #bbb;
     text-decoration: none;
 }
+
 
 
