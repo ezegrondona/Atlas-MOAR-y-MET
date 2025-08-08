@@ -12,34 +12,52 @@ document.addEventListener('DOMContentLoaded', () => {
     menuItems.forEach(item => {
         item.addEventListener('click', () => {
             const submenu = item.querySelector('.submenu');
-            // Cierra todos los submenús
-            document.querySelectorAll('.submenu').forEach(sub => {
-                if (sub !== submenu) {
-                    sub.parentElement.classList.remove('active');
+            // Si el item tiene un submenú, lo expande/contrae
+            if (submenu) {
+                // Alterna la clase 'active' para mostrar/ocultar el submenú
+                item.classList.toggle('active');
+            } else {
+                // Si no tiene submenú, muestra la sección correspondiente
+                const targetId = item.dataset.target;
+                pageSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
                 }
-            });
-            // Alterna la clase 'active' para mostrar/ocultar el submenú
-            item.classList.toggle('active');
+            }
         });
     });
 
     submenuItems.forEach(item => {
         item.addEventListener('click', (event) => {
             event.stopPropagation(); // Evita que se cierre el submenú al hacer clic en un ítem
-
             const targetId = item.dataset.target;
-            
-            // Oculta todas las secciones
             pageSections.forEach(section => {
                 section.classList.remove('active');
             });
-            
-            // Muestra la sección correspondiente
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
                 targetSection.classList.add('active');
             }
         });
+    });
+
+    // Maneja las tarjetas de la sección "Sistemas"
+    document.querySelector('.content').addEventListener('click', (event) => {
+        const cardLink = event.target.closest('.card-link');
+        if (cardLink) {
+            event.preventDefault(); // Evita que el enlace recargue la página
+            const targetId = cardLink.dataset.target;
+            pageSections.forEach(section => {
+                section.classList.remove('active');
+            });
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+        }
     });
 
     // Maneja la galería de imágenes y el modal
