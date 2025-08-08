@@ -1,68 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const menuItems = document.querySelectorAll('.menu-item');
-    const submenuItems = document.querySelectorAll('.submenu-item');
     const pageSections = document.querySelectorAll('.page-section');
     const modal = document.getElementById('image-modal');
     const modalImage = document.getElementById('modal-image');
     const modalCaption = document.getElementById('modal-caption');
     const closeBtn = document.querySelector('.close-btn');
 
-    // Maneja la visibilidad de los submenús y las secciones principales
+    // Maneja la visibilidad de los menús y las secciones de la página
     menuItems.forEach(item => {
         item.addEventListener('click', (event) => {
-            const targetId = item.dataset.target;
+            event.stopPropagation(); // Evita que los clics en submenús se propaguen al menú padre
+
             const submenu = item.querySelector('.submenu');
+            const targetId = item.dataset.target;
 
-            // Cierra todos los submenús y remueve la clase 'active' de todos los elementos
-            menuItems.forEach(i => {
-                if (i !== item) {
-                    i.classList.remove('active');
+            // Si el elemento del menú tiene un submenú, lo expande/contrae
+            if (submenu) {
+                // Si el menú principal es "Sistemas", se mantiene abierto.
+                // Si es otro menú anidado, lo cierra si está abierto y viceversa.
+                if (item.classList.contains('active')) {
+                    item.classList.remove('active');
+                } else {
+                    // Cierra otros menús de un mismo nivel
+                    const parentMenu = item.closest('ul');
+                    if (parentMenu) {
+                        const siblings = parentMenu.querySelectorAll('.menu-item');
+                        siblings.forEach(sibling => {
+                            if (sibling !== item) {
+                                sibling.classList.remove('active');
+                            }
+                        });
+                    }
+                    item.classList.add('active');
                 }
-            });
-
-            // Si es el elemento "Inicio", solo muestra la sección de inicio y cierra los menús
-            if (targetId === 'inicio') {
-                pageSections.forEach(section => section.classList.remove('active'));
-                document.getElementById('inicio').classList.add('active');
-                menuItems.forEach(i => i.classList.remove('active'));
             } 
-            // Si tiene un submenú, alterna la clase 'active' para mostrarlo/ocultarlo
-            else if (submenu) {
-                item.classList.toggle('active');
-            } 
-            // Si es un elemento sin submenú (por ejemplo, los sistemas dentro de 'Sistemas'),
-            // muestra la sección correspondiente
+            // Si el elemento no tiene submenú, navega a la sección correspondiente y cierra todos los menús
             else {
-                pageSections.forEach(section => section.classList.remove('active'));
+                pageSections.forEach(section => {
+                    section.classList.remove('active');
+                });
                 const targetSection = document.getElementById(targetId);
                 if (targetSection) {
                     targetSection.classList.add('active');
                 }
+
+                // Cierra todos los submenús al navegar a una sección final
+                menuItems.forEach(i => i.classList.remove('active'));
             }
         });
     });
 
-    // Maneja los clicks en los submenús para navegar a las páginas de los órganos
-    submenuItems.forEach(item => {
-        item.addEventListener('click', (event) => {
-            event.stopPropagation();
-            const targetId = item.dataset.target;
-            pageSections.forEach(section => section.classList.remove('active'));
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-        });
-    });
-
-    // Maneja los clics en las tarjetas de la sección principal "Sistemas"
+    // Maneja los clics en las tarjetas de la sección "Sistemas"
     document.querySelector('.content').addEventListener('click', (event) => {
         const cardLink = event.target.closest('.card-link');
         if (cardLink) {
-            event.preventDefault();
+            event.preventDefault(); // Evita que el enlace recargue la página
             const targetId = cardLink.dataset.target;
-            pageSections.forEach(section => section.classList.remove('active'));
+            pageSections.forEach(section => {
+                section.classList.remove('active');
+            });
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
                 targetSection.classList.add('active');
