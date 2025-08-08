@@ -92,7 +92,7 @@ header {
 }
 
 .welcome-image {
-    max-width: 80%; /* Ajusta el ancho de la imagen */
+    max-width: 30%; /* Ajusta el ancho de la imagen */
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -211,3 +211,4 @@ header {
     color: #bbb;
     text-decoration: none;
 }
+
