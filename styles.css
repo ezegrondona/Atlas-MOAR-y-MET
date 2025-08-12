@@ -183,7 +183,7 @@ header {
     width: 80%;
     max-width: 1200px;
     max-height: 90vh;/* Para que la imagen no sea más grande que la altura de la ventana */
-    object-fit: contain; /* Mantiene la relación de aspecto */
+
 }
 
 #modal-caption {
@@ -212,6 +212,7 @@ header {
     color: #bbb;
     text-decoration: none;
 }
+
 
 
 
