@@ -126,7 +126,7 @@ header {
 }
 
 .system-card img {
-    width: 26%;
+    width: 100%;
     height: auto;
     display: block;
 }
@@ -211,6 +211,7 @@ header {
     color: #bbb;
     text-decoration: none;
 }
+
 
 
 
