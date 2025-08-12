@@ -99,26 +99,3 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('inicio').classList.add('active');
 
 });
-
-    // Maneja el zoom con la rueda del ratón
-    modalImage.addEventListener('wheel', (event) => {
-        event.preventDefault(); // Evita que la página se desplace
-        const currentWidth = modalImage.clientWidth;
-        let newWidth = currentWidth;
-
-        // Aumenta o disminuye el tamaño de la imagen
-        if (event.deltaY < 0) {
-            // Zoom in (aumentar)
-            newWidth = currentWidth * 1.1;
-        } else {
-            // Zoom out (disminuir)
-            newWidth = currentWidth / 1.1;
-        }
-
-        // Limita el tamaño mínimo y máximo para evitar que la imagen desaparezca o sea demasiado grande
-        if (newWidth > 100 && newWidth < window.innerWidth) {
-            modalImage.style.width = `${newWidth}px`;
-            modalImage.style.maxWidth = 'none'; // Deshabilita el max-width original
-        }
-    });
-});
