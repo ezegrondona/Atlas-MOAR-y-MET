@@ -8,19 +8,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalCaption = document.getElementById('modal-caption');
     const closeBtn = document.querySelector('.close-btn');
 
+    // ----- Opción B: asignar src desde data-src usando encodeURI -----
+    // Esto convierte espacios y caracteres especiales en la URL (ej: " " -> "%20")
+    // Colócalo aquí para que las imágenes tengan src antes de cualquier interacción.
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        img.src = encodeURI(img.dataset.src);
+    });
+    // ----------------------------------------------------------------
+
     // Maneja la visibilidad de los menús y las secciones de la página
     menuItems.forEach(item => {
         item.addEventListener('click', (event) => {
             event.stopPropagation(); // Evita que los clics en submenús se propaguen al menú padre
-
             const submenu = item.querySelector('.submenu');
             const targetId = item.dataset.target;
-
             // Si el elemento del menú tiene un submenú, lo expande/contrae
             if (submenu) {
                 // Alterna la clase 'active' para mostrar/ocultar el submenú
                 item.classList.toggle('active');
-
                 // Cierra otros submenús del mismo nivel
                 const parentMenu = item.closest('ul');
                 if (parentMenu) {
@@ -40,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (targetSection) {
                     targetSection.classList.add('active');
                 }
-
                 // Cierra todos los submenús al navegar a una sección final
                 document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
             }
@@ -100,4 +104,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Muestra la sección de inicio por defecto
     document.getElementById('inicio').classList.add('active');
+
 });
