@@ -68,7 +68,7 @@ header {
 }
 
 .menu-item.active > .submenu {
-    display: block; /* Muestra el submenú del elemento activo */
+    display: none; /* Muestra el submenú del elemento activo */
 }
 
 /* Contenido principal */
@@ -212,6 +212,7 @@ header {
     color: #bbb;
     text-decoration: none;
 }
+
 
 
 
