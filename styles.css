@@ -35,7 +35,8 @@ header {
     position: sticky;
     top: 0;
     height: 100vh;
-    overflow-y: none;
+    overflow-y: auto;
+    flex-shrink: 0; /* Esto evita que la barra se encoja */
 }
 
 .sidebar h2 {
@@ -212,6 +213,7 @@ header {
     color: #bbb;
     text-decoration: none;
 }
+
 
 
 
