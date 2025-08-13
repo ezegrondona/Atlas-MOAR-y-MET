@@ -99,4 +99,3 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('inicio').classList.add('active');
 
 });
-
