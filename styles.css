@@ -64,7 +64,7 @@ header {
 .submenu {
     list-style-type: none;
     padding-left: 20px;
-    display: block; /* Inicialmente oculto */
+    display: none; /* Inicialmente oculto */
 }
 
 .menu-item.active > .submenu {
@@ -212,6 +212,7 @@ header {
     color: #bbb;
     text-decoration: none;
 }
+
 
 
 
