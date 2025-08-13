@@ -64,11 +64,11 @@ header {
 .submenu {
     list-style-type: none;
     padding-left: 20px;
-    display: block; /* Inicialmente oculto */
+    display: none; /* Inicialmente oculto */
 }
 
 .menu-item.active > .submenu {
-    display: none; /* Muestra el submenú del elemento activo */
+    display: block; /* Muestra el submenú del elemento activo */
 }
 
 /* Contenido principal */
@@ -212,6 +212,7 @@ header {
     color: #bbb;
     text-decoration: none;
 }
+
 
 
 
